@@ -93,3 +93,8 @@ let player2 = new Player('Qazi', 100, 15)
 
 // before we do this we have to cretae game class that have the attribute of p1HealthDiv and p2HealthDiv 
 let game = new Game(p1HealthDiv,p2HealthDiv);
+
+let gameState = game.isOver
+
+
+playButton.onclick = () => result.innerText = game.play(player1,player2);
