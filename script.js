@@ -88,8 +88,11 @@ class Game {
   
 }
 // before we do this we have to cretae player class that have the attribute of name , health and attackDamage 
-let player1 = new Player('Lance', 100, 15)
-let player2 = new Player('Qazi', 100, 15)
+let player1 = new Player('Yafet', 100, 15)
+let player2 = new Player('Henok', 100, 15)
+
+let p1 = player1
+let p2 = player2
 
 // before we do this we have to cretae game class that have the attribute of p1HealthDiv and p2HealthDiv 
 let game = new Game(p1HealthDiv,p2HealthDiv);
@@ -105,6 +108,7 @@ document.addEventListener('keydown', function(e) {
         document.getElementById('p1attack').play();
     }
 });
+
   
 document.addEventListener('keydown', function(e) {
     if (e.key == "a" && player2.health > 0 ){
@@ -120,7 +124,7 @@ document.addEventListener('keydown', function(e) {
     }
 });
   
-document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', function(e) {
     if (e.key == "l" && player2.health > 0 ){
         player2.heal(player2)
         document.getElementById('p2heal').play();
