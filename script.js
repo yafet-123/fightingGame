@@ -43,7 +43,53 @@ class Player {
     }
 }
 
+class Game {
+    constructor(p1HealthDiv,p2HealthDiv) {
+        this.isOver = false;
+        this.p1HealthDiv = p1HealthDiv
+        this.p2HealthDiv = p2HealthDiv
+    }
+    
+
+    declareWinner(isOver,p1, p2) {
+        let message
+        if (isOver == true && p1.health <= 0) {
+            message = `${p2.name} WINS!`;
+        } 
+        else if(isOver == true && p2.health <= 0) {
+            message = `${p1.name} WINS!`
+        } 
+    
+        return message
+    }
+    
+    // when we touch the reset button all the data will be resset
+    reset(p1,p2) {
+        p1.health = 100
+        p2.health = 100
+        this.isOver = false
+        resultDiv.innerText = ''
+        updateGame(p1,p2,p1HealthDiv,p2HealthDiv)
+    }
+    
+
+    play(p1, p2) {
+        this.reset(p1,p2);
+        // we put ! to isOver to make true so that it can enter the loop
+        while (!this.isOver) {
+            p1.strike(p1,p2, p1.attackDmg)
+            p2.heal(p2)
+            p2.strike(p2,p1, p2.attackDmg);
+            p1.heal(p1)
+            updateGame(p1,p2,p1HealthDiv,p2HealthDiv);
+        }
+        return this.declareWinner(this.isOver,player1,player2);
+    }
+  
+}
 // before we do this we have to cretae player class that have the attribute of name , health and attackDamage 
 let player1 = new Player('Lance', 100, 15)
 let player2 = new Player('Qazi', 100, 15)
 
+// before we do this we have to cretae game class that have the attribute of p1HealthDiv and p2HealthDiv 
+let game = new Game(p1HealthDiv,p2HealthDiv);
