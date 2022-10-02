@@ -96,5 +96,34 @@ let game = new Game(p1HealthDiv,p2HealthDiv);
 
 let gameState = game.isOver
 
+// it goes to id player change the inner text of the result div that is found in the html to the score
+play.onclick = () => result.innerText = game.play(player1,player2);
 
-playButton.onclick = () => result.innerText = game.play(player1,player2);
+document.addEventListener('keydown', function(e) {
+    if (e.key == "q" && player2.health > 0 ){
+        player1.strike(player1, player2, player1.attackDmg)
+        document.getElementById('p1attack').play();
+    }
+});
+  
+document.addEventListener('keydown', function(e) {
+    if (e.key == "a" && player2.health > 0 ){
+        player1.heal(player1)
+        document.getElementById('p1heal').play();
+    }
+});
+  
+document.addEventListener('keydown', function(e) {
+    if (e.key == "p" && player1.health > 0){
+        player2.strike(player2, player1, player2.attackDmg)
+        document.getElementById('p2attack').play();
+    }
+});
+  
+document.addEventListener('keydown', function(e) {
+    if (e.key == "l" && player2.health > 0 ){
+        player2.heal(player2)
+        document.getElementById('p2heal').play();
+    }
+});
+  
