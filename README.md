@@ -1,4 +1,4 @@
-# Fighting Game
+## Fighting Game
 
 A Responsive Tic Tac Toe Page created with HTML , javascript and CSS.
 
